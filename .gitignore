@@ -6,8 +6,9 @@ out
 .env.*.local
 !.env.example
 .streamlit/secrets.toml
-app.py
-requirements.txt
 *.log
 *.err
 __pycache__/
+.venv/
+venv/
+*.pyc

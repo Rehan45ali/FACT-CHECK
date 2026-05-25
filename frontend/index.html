@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TruthLayer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <p class="eyebrow">Frontend</p>
+        <h1>Upload one PDF and get a clean fact-check report.</h1>
+        <p class="hero-copy">
+          Simple light interface on the frontend, Python verification pipeline on
+          the backend.
+        </p>
+      </header>
+
+      <main class="grid">
+        <section class="panel upload-panel">
+          <div class="panel-head">
+            <div>
+              <p class="label">Frontend</p>
+              <h2>Pick a PDF</h2>
+            </div>
+            <span class="badge">Fast mode</span>
+          </div>
+
+          <form id="factcheck-form" class="upload-form">
+            <label class="dropzone" for="pdf-file">
+              <input id="pdf-file" name="file" type="file" accept=".pdf" />
+              <span class="drop-title">Choose a PDF file</span>
+              <span class="drop-copy">
+                Best for reports, whitepapers, pitch decks, or any text-based PDF.
+              </span>
+            </label>
+
+            <div class="actions">
+              <button id="submit-button" type="submit">Fact-check now</button>
+              <p id="file-name" class="muted">No file selected yet.</p>
+            </div>
+          </form>
+
+          <div class="steps">
+            <article class="step-card">
+              <span>01</span>
+              <div>
+                <h3>Extract</h3>
+                <p>Backend pulls specific claims from the document.</p>
+              </div>
+            </article>
+            <article class="step-card">
+              <span>02</span>
+              <div>
+                <h3>Verify</h3>
+                <p>Gemini and Tavily check each claim against live evidence.</p>
+              </div>
+            </article>
+            <article class="step-card">
+              <span>03</span>
+              <div>
+                <h3>Review</h3>
+                <p>Read verdicts, confidence scores, corrections, and sources.</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <aside class="panel side-panel">
+          <p class="label">Backend</p>
+          <h2 id="status-title">Ready</h2>
+          <p id="status-copy" class="muted">
+            The backend keeps keys server-side and runs after you upload a PDF.
+          </p>
+          <div id="summary-grid" class="summary-grid hidden"></div>
+        </aside>
+      </main>
+
+      <section id="error-box" class="alert hidden"></section>
+
+      <section id="results-panel" class="results hidden">
+        <div class="results-head">
+          <div>
+            <p class="label">Results</p>
+            <h2 id="results-title">Claim report</h2>
+          </div>
+          <p id="results-meta" class="muted"></p>
+        </div>
+        <div id="claims-list" class="claims-list"></div>
+      </section>
+    </div>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>

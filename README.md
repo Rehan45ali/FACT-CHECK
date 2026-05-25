@@ -1,59 +1,31 @@
 # TruthLayer
 
-A fresh Next.js app that splits the frontend and backend cleanly:
+TruthLayer now uses a clean Python split:
 
-- Frontend: `src/app/page.tsx`
-- Backend: `src/app/api/factcheck/route.ts`
-- Shared logic: `src/lib/*`
+- `frontend/` for the light UI
+- `backend/` for the FastAPI backend
+- `app.py` as a tiny Vercel entrypoint
 
-It uploads a PDF, extracts claims with Gemini, checks live sources through Tavily, and returns a fact-check report.
-
-## Local setup
-
-1. Install dependencies:
+## Local run
 
 ```bash
-npm install
-```
-
-2. Create your local env file:
-
-```bash
+python -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
 copy .env.example .env.local
+uvicorn app:app --reload
 ```
 
-3. Add your API keys to `.env.local`:
+Open [http://127.0.0.1:8000](http://127.0.0.1:8000).
+
+## Environment variables
 
 ```bash
 GEMINI_API_KEY=your-gemini-key
 TAVILY_API_KEY=your-tavily-key
-GEMINI_MODEL=gemini-3.5-flash
+GEMINI_MODEL=gemini-2.5-flash
 ```
 
-4. Run the app:
+## Deploy
 
-```bash
-npm run dev
-```
-
-## Build
-
-```bash
-npm run build
-```
-
-## Deploy to Vercel
-
-1. Push the repo to GitHub.
-2. Import the repo in Vercel.
-3. Add these environment variables in the Vercel project settings:
-   - `GEMINI_API_KEY`
-   - `TAVILY_API_KEY`
-   - `GEMINI_MODEL` (optional, defaults to `gemini-3.5-flash`)
-4. Deploy.
-
-## Notes
-
-- The app keeps secrets server-side only.
-- The API route expects a text-based PDF. Scanned or image-only PDFs may not extract enough text.
-- Claim extraction is capped so the report stays fast enough for serverless deployment.
+Push to GitHub and deploy on Vercel with the same environment variables.
