@@ -1,6 +1,6 @@
-# TruthLayer
+# FACT CHECK
 
-TruthLayer now uses a clean Python split:
+FACT CHECK now uses a clean Python split:
 
 - `frontend/` for the light UI
 - `backend/` for the FastAPI backend
