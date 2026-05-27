@@ -23,7 +23,7 @@ Open [http://127.0.0.1:8000](http://127.0.0.1:8000).
 ```bash
 GEMINI_API_KEY=your-gemini-key
 TAVILY_API_KEY=your-tavily-key
-GEMINI_MODEL=gemini-2.5-flash
+GEMINI_MODEL=gemini-2.5-flash-lite
 ```
 
 ## Deploy
